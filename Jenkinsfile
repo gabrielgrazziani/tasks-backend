@@ -19,7 +19,7 @@ pipeline{
                 scannerHome = tool 'SonarQube_Scanner'
             }
             steps{
-                withSonarQubeEnv('SONAR_LOCAL'){
+                withSonarQubeEnv('sona_local'){
                     sh "${scannerHome}/bin/sonar-scanner -e -Dsonar.projectKey=DeployBack -Dsonar.java.binaries=target -Dsonar.coverage.exclusions=**/src/test/**,**/model/**,**Application.java"
                 }
             }
