@@ -32,5 +32,8 @@ pipeline{
                 }
             }
         }
+        stage('Deploy Backend'){
+            deploy adapters: [tomcat9(credentialsId: 'ToncatLogin', path: '', url: 'http://192.168.0.22:8001')], contextPath: 'tasks-backend', onFailure: false, war: '**/*.war'
+        }
     }
 }
