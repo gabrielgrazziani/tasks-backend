@@ -45,5 +45,14 @@ pipeline{
                 }
             }
         }
+        stage('Deploy Frontend'){
+            steps{
+                dir('frontend') {
+                    git 'https://github.com/gabrielgrazziani/tasks-frontend'
+                    sh 'mvn clean package'
+                    deploy adapters: [tomcat9(credentialsId: 'ToncatLogin', path: '', url: 'http://192.168.0.22:8001')], contextPath: 'tasks', onFailure: false, war: '**/*.war'
+                }
+            }
+        }
     }
 }
