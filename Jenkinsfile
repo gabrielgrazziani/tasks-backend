@@ -54,5 +54,13 @@ pipeline{
                 }
             }
         }
+        stage('Functional Test'){
+            steps{
+                dir('functional_test') {
+                    git 'https://github.com/gabrielgrazziani/jenkins_selenium'
+                    sh 'mvn test'
+                }
+            }
+        }
     }
 }
