@@ -64,10 +64,13 @@ pipeline{
         //     }
         // }
         stage('Deploy Prod'){
+            environment {
+                PATH = "$PATH:/usr/local/bin"
+            }
             steps{
                 // sh '/usr/local/bin/docker-compose build'
                 // sh '/usr/local/bin/docker-compose up -d'
-                sh 'ls /usr/local/bin/docker-compose'
+                sh 'docker-compose --help'
             }
         }
     }
