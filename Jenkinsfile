@@ -67,7 +67,7 @@ pipeline{
             steps{
                 // sh '/usr/local/bin/docker-compose build'
                 // sh '/usr/local/bin/docker-compose up -d'
-                sh 'ls /usr/local/bin/'
+                sh 'ls /usr/local/bin/docker-compose'
             }
         }
     }
