@@ -64,13 +64,19 @@ pipeline{
         //     }
         // }
         stage('Deploy Prod'){
-            environment {
-                PATH = "$PATH:/usr/local/bin"
-            }
-            steps{
-                // sh '/usr/local/bin/docker-compose build'
-                // sh '/usr/local/bin/docker-compose up -d'
-                sh 'docker-compose --help'
+            // environment {
+            //     PATH = "$PATH:/usr/local/bin"
+            // }
+            // steps{
+            //     // sh '/usr/local/bin/docker-compose build'
+            //     // sh '/usr/local/bin/docker-compose up -d'
+            //     sh 'docker-compose --help'
+            // }
+            stage('docker-compose') {
+                steps {
+                    sh "docker-compose build"
+                    // sh "docker-compose up -d"
+                }
             }
         }
     }
